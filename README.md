@@ -1,27 +1,18 @@
-# ChangeDetection
+I was shocked to know one line of my code will optimize the application this much.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.2.
+and the line is "**changeDetection: ChangeDetectionStrategy.OnPush**" refer child component ts file for this code snippet.
 
-## Development server
+to know how this line of code is impacting in the application optimizations. please comment this code snippet and run the application and open console. as shown in below child component rendered more times which is not required.
+![image](https://github.com/user-attachments/assets/b065fa8e-abc4-42aa-a3ea-a032fe91aeb0).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+as my application incrementing the counter value on button click. try clicking on the button and observe the console. for each click child component is rendering again and again unnecessarily
+![image](https://github.com/user-attachments/assets/d8eca263-4b39-468e-adf6-9fcba4a8e2f7)
 
-## Code scaffolding
+so here whenever parent properties or variables change happening (for e.g. in our case counter variable). its child component is identifying the change detection and re rendering the component.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+to avoid this use **changeDetection: ChangeDetectionStrategy.OnPush** in child component.ts. default value for changeDetection is set ChangeDetectionStrategy.Default.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+Hope you understand this concept !!!!!!!!!!
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
